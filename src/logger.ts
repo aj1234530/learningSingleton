@@ -1,5 +1,4 @@
-import { GameManager } from "./store";
-import { gameManager } from ".";
+import { gameManager } from "./store";
 
 export const loggerF = ()=>{
     setInterval(()=>{
