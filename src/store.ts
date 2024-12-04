@@ -9,8 +9,17 @@ interface Game{
 //not exporting GameManager to avoid mistake of instaniating it anywhere else than store
  class GameManager {
     games: Game[] = []; //saying games is an array of time Game(defined above) array
-    constructor(){
+    private static instance : GameManager // instace attribute on class
+   private constructor(){
         this.games = []
+    }
+    //static method - creates instance of class if dne else return same every time instantiated
+    static getInstance(){
+        if(GameManager.instance){
+            return GameManager.instance
+        }
+        GameManager.instance = new GameManager();
+        return GameManager.instance
     }
     addMove(gameId:string, move:string){
         const game = this.games.find(game =>game.id === gameId) //findig a particular game
@@ -28,7 +37,7 @@ interface Game{
 
 
 }
-export const gameManager = new GameManager()
+export const gameManager = GameManager.getInstance();
 
 
 
