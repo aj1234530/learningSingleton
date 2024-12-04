@@ -6,7 +6,8 @@ interface Game{
     player2: string,
     moves: string []
 }
-export class GameManager {
+//not exporting GameManager to avoid mistake of instaniating it anywhere else than store
+ class GameManager {
     games: Game[] = []; //saying games is an array of time Game(defined above) array
     constructor(){
         this.games = []
